@@ -1,23 +1,26 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.5.10"
-    application
+        com.mikelalvarezgo.Plugins.topLevelPlugins.forEach { (n, v) -> id(n) version v }
 }
 
-group = "me.mikel"
+group = "com.mikelalvarezgo"
 version = "1.0-SNAPSHOT"
 
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    apply(plugin = "java")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    dependencies{
+     com.mikelalvarezgo.Deps.implementations.forEach(::implementation)
+     com.mikelalvarezgo.Deps.testing.forEach(::testImplementation)
+    }
+}
 repositories {
     mavenCentral()
 }
-
-
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "15"
-}
-
-application {
-    mainClass.set("MainKt")
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "15"
 }
