@@ -5,6 +5,9 @@ object Deps {
         // Ktor Server
         "io.ktor:ktor-server-core:${Versions.ktor}",
         "io.ktor:ktor-server-netty:${Versions.ktor}",
+        "io.ktor:ktor-server-content-negotiation:${Versions.ktor}",
+        //serialization
+        "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}",
 
         // Monitoring metrics
         "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
@@ -19,6 +22,8 @@ object Deps {
     )
 
     val testing = listOf<String>(
+        "io.ktor:ktor-server-test-host:${Versions.ktor}",
+        "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}",
         "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}"
     )
 
