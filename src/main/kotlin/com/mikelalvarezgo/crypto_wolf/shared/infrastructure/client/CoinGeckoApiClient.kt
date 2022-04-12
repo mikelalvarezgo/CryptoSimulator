@@ -7,5 +7,4 @@ class CoinGeckoApiClient : CryptoClient {
     override fun getCurrentValue(currency: Currency): Int {
         TODO("Not yet implemented")
     }
-git
 }
