@@ -1,5 +1,6 @@
 package com.mikelalvarezgo
-object Versions{
+
+object Versions {
 
     //app level
     const val gradle = "4.0.1"
