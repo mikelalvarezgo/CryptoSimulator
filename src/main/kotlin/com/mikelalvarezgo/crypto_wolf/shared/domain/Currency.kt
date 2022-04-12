@@ -1,9 +1,9 @@
 package com.mikelalvarezgo.crypto_wolf.shared.domain
 
-sealed interface Currency{
+sealed interface Currency {
     val symbol: String
 }
 
-object Bitcoin:Currency {
+object Bitcoin : Currency {
     override val symbol: String = "BTC"
 }

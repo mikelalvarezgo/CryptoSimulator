@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-        com.mikelalvarezgo.Plugins.topLevelPlugins.forEach { (n, v) -> id(n) version v }
+    com.mikelalvarezgo.Plugins.topLevelPlugins.forEach { (n, v) -> id(n) version v }
 }
 
 group = "com.mikelalvarezgo"
@@ -12,9 +13,9 @@ allprojects {
     }
     apply(plugin = "java")
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    dependencies{
-     com.mikelalvarezgo.Deps.implementations.forEach(::implementation)
-     com.mikelalvarezgo.Deps.testing.forEach(::testImplementation)
+    dependencies {
+        com.mikelalvarezgo.Deps.implementations.forEach(::implementation)
+        com.mikelalvarezgo.Deps.testing.forEach(::testImplementation)
     }
 }
 repositories {

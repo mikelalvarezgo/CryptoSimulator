@@ -1,4 +1,5 @@
 package com.mikelalvarezgo
+
 object Plugins {
     const val kotlinVersion = "1.6.0"
     private const val shadowVersion = "7.1.2"

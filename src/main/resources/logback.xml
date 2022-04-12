@@ -13,11 +13,10 @@
     </appender>
 
 
-
-    <logger name="com.fmpwizard.snippet" level="info" />
-    <logger name="com.fmpwizard.api" level="info" />
-    <logger name="com.fmpwizard.model" level="info" />
+    <logger name="com.fmpwizard.snippet" level="info"/>
+    <logger name="com.fmpwizard.api" level="info"/>
+    <logger name="com.fmpwizard.model" level="info"/>
     <root level="error">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
