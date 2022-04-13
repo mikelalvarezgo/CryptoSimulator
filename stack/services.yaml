@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    container_name: mariadb
+    volumes:
+      - /home/mikel/db/mysql/data:/var/lib/mysql
+      - ./mariadb/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+        - 3306:3306
