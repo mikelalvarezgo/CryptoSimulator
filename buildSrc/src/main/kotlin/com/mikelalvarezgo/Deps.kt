@@ -13,7 +13,7 @@ object Deps {
         // DB
         "org.jetbrains.exposed:exposed:${Versions.exposed}",
         // Monitoring metrics
-        "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
+        "io.ktor:k  tor-server-metrics-micrometer:${Versions.ktor}",
 
         // Logging
         "ch.qos.logback:logback-classic:${Versions.logback}",
@@ -26,8 +26,11 @@ object Deps {
 
     val testing = listOf<String>(
         "io.ktor:ktor-server-test-host:${Versions.ktor}",
+        "io.kotest:kotest-runner-junit5:${Versions.kotest}",
         "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}",
-        "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}"
+        "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}",
+        "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}",
+        "org.apache.commons:commons-lang3:${Versions.apacheCommons}"
     )
 
 }

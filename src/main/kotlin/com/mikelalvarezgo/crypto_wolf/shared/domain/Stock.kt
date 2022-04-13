@@ -1,6 +1,6 @@
 package com.mikelalvarezgo.crypto_wolf.shared.domain
 
-import java.util.*
+import org.joda.time.DateTime
 
-data class Stock(val currency: Currency, val quantity: Int, val purchaseDate: Date)
+data class Stock(val currency: Currency, val quantity: Double, val purchaseDate: DateTime)
 
