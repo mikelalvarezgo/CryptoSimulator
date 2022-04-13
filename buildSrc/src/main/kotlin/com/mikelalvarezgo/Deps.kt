@@ -13,7 +13,7 @@ object Deps {
         // DB
         "org.jetbrains.exposed:exposed:${Versions.exposed}",
         // Monitoring metrics
-        "io.ktor:k  tor-server-metrics-micrometer:${Versions.ktor}",
+        "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
 
         // Logging
         "ch.qos.logback:logback-classic:${Versions.logback}",
