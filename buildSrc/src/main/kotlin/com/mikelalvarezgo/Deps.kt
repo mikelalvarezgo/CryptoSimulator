@@ -10,6 +10,8 @@ object Deps {
         //serialization
         "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}",
 
+        // DB
+        "org.jetbrains.exposed:exposed:${Versions.exposed}",
         // Monitoring metrics
         "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
 
