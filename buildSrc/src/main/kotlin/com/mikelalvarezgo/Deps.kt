@@ -26,8 +26,11 @@ object Deps {
 
     val testing = listOf<String>(
         "io.ktor:ktor-server-test-host:${Versions.ktor}",
+        "io.kotest:kotest-runner-junit5:${Versions.kotest}",
         "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}",
-        "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}"
+        "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}",
+        "io.kotest:kotest-assertions-core-jvm:${Versions.kotest}",
+        "org.apache.commons:commons-lang3:${Versions.apacheCommons}"
     )
 
 }

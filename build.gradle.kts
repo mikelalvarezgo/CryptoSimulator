@@ -11,6 +11,9 @@ allprojects {
     repositories {
         mavenCentral()
     }
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
     apply(plugin = "java")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     dependencies {
