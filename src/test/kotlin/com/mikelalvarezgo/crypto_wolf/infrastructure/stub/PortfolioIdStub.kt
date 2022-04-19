@@ -5,10 +5,8 @@ import com.mikelalvarezgo.crypto_wolf.infrastructure.stub.generics.ListStub
 import com.mikelalvarezgo.crypto_wolf.shared.domain.Portfolio
 import com.mikelalvarezgo.crypto_wolf.shared.domain.PortfolioId
 import com.mikelalvarezgo.crypto_wolf.shared.domain.Stock
+import java.util.UUID
 
-object PortfolioStub {
-    fun gen(
-        id: PortfolioId = PortfolioIdStub.gen(),
-        stocks: List<Stock> = ListStub.random(IntStub.between(1, 2)) { StockStub.random() }): Portfolio =
-        Portfolio(id, stocks)
+object PortfolioIdStub {
+    fun gen(id: UUID = UUID.randomUUID()): PortfolioId = PortfolioId(id)
 }
