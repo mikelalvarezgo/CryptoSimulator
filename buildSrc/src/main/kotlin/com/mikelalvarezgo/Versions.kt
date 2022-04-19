@@ -12,6 +12,7 @@ object Versions {
     val exposed = "0.17.14"
     val http4k = "4.25.8.0"
     val ktor = "2.0.0"
+    val kotlinLogging = "1.12.5"
     val kotest = "5.2.3"
     val logback = "1.2.6"
     val mockito = "4.0.0"

@@ -17,6 +17,7 @@ object Deps {
 
         // Logging
         "ch.qos.logback:logback-classic:${Versions.logback}",
+        "io.github.microutils:kotlin-logging:${Versions.kotlinLogging}",
 
         // Tools
         "io.arrow-kt:arrow-optics:${Versions.arrow}",
