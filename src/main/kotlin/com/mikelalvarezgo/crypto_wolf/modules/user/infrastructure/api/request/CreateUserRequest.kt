@@ -3,7 +3,7 @@ package com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.request
 import com.mikelalvarezgo.crypto_wolf.modules.user.application.CreateUserCommand
 import kotlinx.serialization.*
 
-@serializable
+@Serializable
 data class CreateUserRequest(
     val id: String,
     val name: String,

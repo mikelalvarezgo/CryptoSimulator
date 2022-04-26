@@ -10,8 +10,11 @@ object Deps {
         //serialization
         "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}",
 
+
         // DB
         "org.jetbrains.exposed:exposed:${Versions.exposed}",
+        "org.mariadb.jdbc:mariadb-java-client:${Versions.mariaDBDriver}",
+
         // Monitoring metrics
         "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
 

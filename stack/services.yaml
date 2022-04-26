@@ -4,10 +4,13 @@ services:
     image: mariadb
     restart: always
     container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_USER=mikel
+      - MYSQL_PASSWORD=12345
+      - MYSQL_DATABASE=crypto_wolf
     volumes:
       - /home/mikel/db/mysql/data:/var/lib/mysql
       - ./mariadb/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - 3306:3306
