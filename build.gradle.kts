@@ -20,6 +20,10 @@ allprojects {
         com.mikelalvarezgo.Deps.implementations.forEach(::implementation)
         com.mikelalvarezgo.Deps.testing.forEach(::testImplementation)
     }
+    test {
+        exclude '**/**Integration'
+        exclude '**/**Acceptance
+    }
 }
 repositories {
     mavenCentral()
