@@ -2,7 +2,6 @@ package com.mikelalvarezgo.crypto_wolf
 
 import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.persistence.MariaDbUserTableHelper
 import com.mikelalvarezgo.crypto_wolf.shared.infrastructure.persistence.mariadb.MariaDbConfig
-import com.mikelalvarezgo.crypto_wolf.shared.infrastructure.persistence.mariadb.MariaDdTableHelper
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 import org.jetbrains.exposed.sql.Database

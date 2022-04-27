@@ -4,11 +4,11 @@ import arrow.core.Option
 import arrow.core.singleOrNone
 import com.mikelalvarezgo.crypto_wolf.modules.user.domain.User
 import com.mikelalvarezgo.crypto_wolf.modules.user.domain.contract.UserRepository
-import com.mikelalvarezgo.crypto_wolf.shared.domain.TaxId
 import com.mikelalvarezgo.crypto_wolf.shared.domain.UserId
-import com.mikelalvarezgo.crypto_wolf.shared.infrastructure.persistence.mariadb.MariaDbTable
-import org.jetbrains.exposed.sql.*
-import org.joda.time.DateTime
+import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.update
 
 class MariaDbUserRepository : UserRepository {
 
@@ -36,7 +36,8 @@ class MariaDbUserRepository : UserRepository {
     }
 
     override fun find(id: UserId): Option<User> =
-        MariaDbUserTable.select { MariaDbUserTable.userId eq id.raw() }.singleOrNone().map { MariaDbUserTable.fromRow(it) }
+        MariaDbUserTable.select { MariaDbUserTable.userId eq id.raw() }.singleOrNone()
+            .map { MariaDbUserTable.fromRow(it) }
 
     override fun delete(id: UserId) {
         MariaDbUserTable.deleteWhere { MariaDbUserTable.userId eq id.raw() }

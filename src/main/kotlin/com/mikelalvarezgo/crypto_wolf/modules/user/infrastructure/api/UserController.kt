@@ -28,4 +28,4 @@ class UserController(createUserUseCase: CreateUserUseCase) {
             }
         }
     }
-    }
+}

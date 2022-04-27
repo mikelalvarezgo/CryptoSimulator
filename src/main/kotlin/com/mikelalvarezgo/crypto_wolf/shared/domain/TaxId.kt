@@ -11,7 +11,7 @@ data class TaxId(val value: String) {
     companion object TaxIdCompanion {
         private fun isValid(value: String): Boolean = value.length == 11
         fun unsafe(value: String): TaxId =
-            if (isValid(value)) throw InvalidTaxId(value) else TaxId(value)
+            if (isValid(value)) TaxId(value) else throw InvalidTaxId(value)
 
         fun fromString(value: String): Validation<TaxId> =
             if (isValid(value)) TaxId(value).validNel() else InvalidTaxId(value).invalidNel()
