@@ -14,16 +14,17 @@ allprojects {
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
     }
+    tasks.withType<Test>() {
+        exclude("**/acceptance/*.kt")
+        exclude("**/integration/*.kt")
+    }
     apply(plugin = "java")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     dependencies {
         com.mikelalvarezgo.Deps.implementations.forEach(::implementation)
         com.mikelalvarezgo.Deps.testing.forEach(::testImplementation)
     }
-    test {
-        exclude '**/**Integration'
-        exclude '**/**Acceptance
-    }
+
 }
 repositories {
     mavenCentral()
