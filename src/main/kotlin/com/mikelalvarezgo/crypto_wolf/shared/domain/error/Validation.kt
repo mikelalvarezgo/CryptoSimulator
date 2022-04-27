@@ -9,7 +9,12 @@ typealias Validation<ValidType> = ValidatedNel<ValidationError, ValidType>
 
 object ValidationHelper {
     fun validateDate(value: String): Validation<DateTime> {
-        val result = when (val parsedDateTime = DateTime.parse(value)) {
+        val parsedDateTime = try {
+            DateTime.parse(value)
+        } catch (e: Throwable) {
+            null
+        }
+        val result = when (parsedDateTime) {
             null -> InvalidDateTime(value).invalidNel()
             else -> parsedDateTime!!.validNel()
         }

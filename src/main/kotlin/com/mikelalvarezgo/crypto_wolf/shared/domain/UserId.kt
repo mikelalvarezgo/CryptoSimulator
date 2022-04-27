@@ -14,7 +14,7 @@ data class UserId(val value: UUID) {
     companion object UserIdCompanion {
         private fun isValid(value: String): Boolean = Option(UUID.fromString(value)).isDefined()
         fun unsafe(value: String): UserId =
-            if (isValid(value)) throw InvalidUserId(value) else UserId(UUID.fromString(value))
+            if (isValid(value)) UserId(UUID.fromString(value)) else throw InvalidUserId(value)
 
         fun fromString(value: String): Validation<UserId> =
             if (isValid(value)) UserId(UUID.fromString(value)).validNel() else InvalidUserId(value).invalidNel()

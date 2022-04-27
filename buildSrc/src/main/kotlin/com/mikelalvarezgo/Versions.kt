@@ -15,6 +15,6 @@ object Versions {
     val kotlinLogging = "1.12.5"
     val kotest = "5.2.3"
     val logback = "1.2.6"
-    val mariaDBDriver =    "3.0.4"
+    val mariaDBDriver = "3.0.4"
     val mockito = "4.0.0"
 }
