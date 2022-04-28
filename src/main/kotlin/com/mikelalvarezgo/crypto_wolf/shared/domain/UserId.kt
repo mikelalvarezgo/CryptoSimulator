@@ -12,7 +12,11 @@ data class UserId(val value: UUID) {
     fun raw(): String = value.toString()
 
     companion object UserIdCompanion {
-        private fun isValid(value: String): Boolean = Option(UUID.fromString(value)).isDefined()
+        private fun isValid(value: String): Boolean {
+            val idNullable: UUID? =
+                try { UUID.fromString(value) }catch (e: Throwable){ null}
+            return idNullable != null
+        }
         fun unsafe(value: String): UserId =
             if (isValid(value)) UserId(UUID.fromString(value)) else throw InvalidUserId(value)
 
