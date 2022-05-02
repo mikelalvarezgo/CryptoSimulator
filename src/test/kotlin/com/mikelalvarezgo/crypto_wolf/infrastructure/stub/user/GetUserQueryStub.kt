@@ -9,6 +9,6 @@ object GetUserQueryStub {
     ): GetUserQuery = GetUserQuery(id)
 
     fun invalidId(
-        id: String =StringStub.random(),
+        id: String = StringStub.random(),
     ): GetUserQuery = GetUserQuery(id)
 }
