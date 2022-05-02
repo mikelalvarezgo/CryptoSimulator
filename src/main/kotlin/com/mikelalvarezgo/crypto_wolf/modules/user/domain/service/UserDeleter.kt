@@ -5,6 +5,9 @@ import com.mikelalvarezgo.crypto_wolf.modules.user.domain.contract.UserRepositor
 import com.mikelalvarezgo.crypto_wolf.shared.domain.UserId
 
 class UserDeleter(private val repository: UserRepository) {
-    fun delete(id: UserId): Unit =
-        repository.find(id).fold<Unit>(throw UserNotFoundError(id)) { user -> repository.delete(id) }
+    fun delete(id: UserId): Unit {
+        fun launchException(): Unit = throw UserNotFoundError(id)
+        repository.find(id).fold<Unit>({ -> launchException() }, { _ -> repository.delete(id) })
+
+    }
 }

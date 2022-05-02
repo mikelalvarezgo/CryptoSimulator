@@ -38,7 +38,7 @@ class UserController(
                 else {
                     val result = getUserUseCase.execute(GetUserQuery(id))
                     if (result.isValid) {
-                        call.respondText("Deleted", status = HttpStatusCode.OK)
+                        result.map { call.respond(GetUserResponse.fromModel(it)) }
                     } else {
                         result.mapLeft { errors ->
                             call.respondText(
@@ -57,7 +57,7 @@ class UserController(
                 else {
                     val result = deleteUserUseCase.execute(DeleteUserCommand(id))
                     if (result.isValid) {
-                        result.map { call.respond(GetUserResponse.fromModel(it)) }
+                        call.respondText("Deleted", status = HttpStatusCode.OK)
                     } else {
                         result.mapLeft { errors ->
                             call.respondText(
