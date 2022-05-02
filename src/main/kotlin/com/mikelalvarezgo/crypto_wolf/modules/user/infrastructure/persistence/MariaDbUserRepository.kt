@@ -41,10 +41,10 @@ class MariaDbUserRepository : UserRepository {
     }
 
     override fun find(id: UserId): Option<User> =
-       transaction {
-           MariaDbUserTable.select { MariaDbUserTable.userId eq id.raw() }.singleOrNone()
-               .map { MariaDbUserTable.fromRow(it) }
-       }
+        transaction {
+            MariaDbUserTable.select { MariaDbUserTable.userId eq id.raw() }.singleOrNone()
+                .map { MariaDbUserTable.fromRow(it) }
+        }
 
     override fun delete(id: UserId) {
         transaction {

@@ -1,8 +1,6 @@
 package com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api
 
-import com.mikelalvarezgo.crypto_wolf.modules.user.application.CreateUserUseCase
-import com.mikelalvarezgo.crypto_wolf.modules.user.application.GetUserQuery
-import com.mikelalvarezgo.crypto_wolf.modules.user.application.GetUserUseCase
+import com.mikelalvarezgo.crypto_wolf.modules.user.application.*
 import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.request.CreateUserRequest
 import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.response.GetUserResponse
 import io.ktor.http.*
@@ -11,7 +9,11 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-class UserController(createUserUseCase: CreateUserUseCase, getUserUseCase: GetUserUseCase) {
+class UserController(
+    createUserUseCase: CreateUserUseCase,
+    getUserUseCase: GetUserUseCase,
+    deleteUserUseCase: DeleteUserUseCase
+) {
     val routes: Routing.() -> Unit = {
         route("/user") {
             post {
@@ -45,6 +47,24 @@ class UserController(createUserUseCase: CreateUserUseCase, getUserUseCase: GetUs
                             )
                         }
 
+                    }
+                }
+            }
+            delete("/{id}") {
+                val id = call.parameters["id"]
+                if (id == null)
+                    call.respondText("Id not defined in path", status = HttpStatusCode.BadRequest)
+                else {
+                    val result = deleteUserUseCase.execute(DeleteUserCommand(id))
+                    if (result.isValid) {
+                        call.respondText("Deleted", status = HttpStatusCode.OK)
+                    } else {
+                        result.mapLeft { errors ->
+                            call.respondText(
+                                errors.fold("") { message, error -> message + "," + error.toMessage() },
+                                status = HttpStatusCode.BadRequest
+                            )
+                        }
                     }
                 }
             }

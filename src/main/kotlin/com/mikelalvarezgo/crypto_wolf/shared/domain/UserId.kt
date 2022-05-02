@@ -1,6 +1,5 @@
 package com.mikelalvarezgo.crypto_wolf.shared.domain
 
-import arrow.core.Option
 import arrow.core.invalidNel
 import arrow.core.validNel
 import com.mikelalvarezgo.crypto_wolf.shared.domain.error.InvalidUserId
@@ -14,9 +13,14 @@ data class UserId(val value: UUID) {
     companion object UserIdCompanion {
         private fun isValid(value: String): Boolean {
             val idNullable: UUID? =
-                try { UUID.fromString(value) }catch (e: Throwable){ null}
+                try {
+                    UUID.fromString(value)
+                } catch (e: Throwable) {
+                    null
+                }
             return idNullable != null
         }
+
         fun unsafe(value: String): UserId =
             if (isValid(value)) UserId(UUID.fromString(value)) else throw InvalidUserId(value)
 
