@@ -2,6 +2,7 @@ package com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api
 
 import com.mikelalvarezgo.crypto_wolf.modules.user.application.*
 import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.request.CreateUserRequest
+import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.request.UpdateUserRequest
 import com.mikelalvarezgo.crypto_wolf.modules.user.infrastructure.api.response.GetUserResponse
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -12,6 +13,7 @@ import io.ktor.server.routing.*
 class UserController(
     createUserUseCase: CreateUserUseCase,
     getUserUseCase: GetUserUseCase,
+    updateUserUseCase: UpdateUserUseCase,
     deleteUserUseCase: DeleteUserUseCase
 ) {
     val routes: Routing.() -> Unit = {
@@ -21,6 +23,21 @@ class UserController(
                 val result = createUserUseCase.execute(request.toCommand())
                 if (result.isValid) {
                     call.respondText("Created", status = HttpStatusCode.Created)
+                } else {
+                    result.mapLeft { errors ->
+                        call.respondText(
+                            errors.fold("") { message, error -> message + "," + error.toMessage() },
+                            status = HttpStatusCode.BadRequest
+                        )
+                    }
+
+                }
+            }
+            put {
+                val request = call.receive<UpdateUserRequest>()
+                val result = updateUserUseCase.execute(request.toCommand())
+                if (result.isValid) {
+                    call.respondText("Ok", status = HttpStatusCode.OK)
                 } else {
                     result.mapLeft { errors ->
                         call.respondText(
