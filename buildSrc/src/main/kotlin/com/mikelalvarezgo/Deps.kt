@@ -14,7 +14,8 @@ object Deps {
         // DB
         "org.jetbrains.exposed:exposed:${Versions.exposed}",
         "org.mariadb.jdbc:mariadb-java-client:${Versions.mariaDBDriver}",
-
+        "org.litote.kmongo:kmongo:${Versions.kmongo}",
+        "org.litote.kmongo:kmongo-coroutine:${Versions.kmongo}",
         // Monitoring metrics
         "io.ktor:ktor-server-metrics-micrometer:${Versions.ktor}",
 
